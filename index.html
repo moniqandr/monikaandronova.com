@@ -40,6 +40,33 @@
   </div>
 </section>
 
+<section class="prev" aria-labelledby="prev-label">
+  <div class="inner">
+    <p class="label prev-label" id="prev-label" data-i18n="prev_label">Zuvor tätig bei</p>
+    <div class="prev-viewport">
+      <div class="prev-track">
+        <!-- Company names are plain text on purpose (no logo files yet).
+             Later, each <span> can be replaced by: <img src="logos/name.svg" alt="Name">
+             (the CSS for .prev-logo img is already in styles.css) -->
+        <div class="prev-item"><div class="prev-logo"><span>Deutsche Bank</span></div></div>
+        <div class="prev-item"><div class="prev-logo"><span>Startbereit</span></div></div>
+        <div class="prev-item"><div class="prev-logo"><span>Wohnvoll</span></div></div>
+        <div class="prev-item"><div class="prev-logo"><span>BASF</span></div></div>
+        <div class="prev-item"><div class="prev-logo"><span>Micropsi Industries</span></div></div>
+        <div class="prev-item"><div class="prev-logo"><span>Capgemini Invent</span></div></div>
+        <!-- exact duplicate set for the seamless loop, hidden from screen readers -->
+        <div class="prev-item" aria-hidden="true"><div class="prev-logo"><span>Deutsche Bank</span></div></div>
+        <div class="prev-item" aria-hidden="true"><div class="prev-logo"><span>Startbereit</span></div></div>
+        <div class="prev-item" aria-hidden="true"><div class="prev-logo"><span>Wohnvoll</span></div></div>
+        <div class="prev-item" aria-hidden="true"><div class="prev-logo"><span>BASF</span></div></div>
+        <div class="prev-item" aria-hidden="true"><div class="prev-logo"><span>Micropsi Industries</span></div></div>
+        <div class="prev-item" aria-hidden="true"><div class="prev-logo"><span>Capgemini Invent</span></div></div>
+      </div>
+    </div>
+    <p class="prev-note" data-i18n="prev_note">Logos sind Marken der jeweiligen Inhaber und dienen nur der Darstellung meines beruflichen Werdegangs. Es besteht keine Verbindung und keine Empfehlung.</p>
+  </div>
+</section>
+
 <section class="principle">
   <div class="inner">
     <div class="head">
@@ -236,6 +263,8 @@ var EN = {
   h_lead: 'I support founders and young companies in Germany: from a first founding check and the business plan to market entry. With 11+ years in consulting, startups and building my own ventures, I’m here to help you start and build your venture in Germany.',
   h_cta1: 'Free intro call, 20 minutes', h_cta2: 'See services',
   h_caption: 'Founding · Business plan · Venture building',
+  prev_label: 'Previously at',
+  prev_note: 'Logos are trademarks of their respective owners. Shown only to indicate my professional background; no affiliation or endorsement is implied.',
   r1_v: '€800,000', c1_price: '€190', c2_price: 'On request',
   p_label: 'How I work', p_title: 'Create the <span class="mark">right foundation</span> to start and run your business, and stay on top of your to-dos.',
   p1: 'Starting a company raises many open questions: which legal form, which costs, which funding, which plan. Especially in Germany, the paperwork can be overwhelming.',
