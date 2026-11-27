@@ -1,0 +1,93 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Impressum – Monika Andronova</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="styles.css">
+
+<header>
+  <div class="inner">
+    <a class="name" href="index.html">Monika Andronova</a>
+    <nav>
+      <a class="link" href="index.html#leistungen" data-i18n="nav1">Leistungen</a>
+      <a class="link" href="index.html#ergebnisse" data-i18n="nav2">Ergebnisse</a>
+      <a class="link" href="index.html#faq" data-i18n="nav3">Fragen</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" id="lang-de" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn small" href="https://calendar.app.google/z6Ki92aGeUk1TYn67" target="_blank" rel="noopener" data-i18n="nav4">Erstgespräch</a>
+    </nav>
+  </div>
+</header>
+
+<section class="about legal" id="impressum">
+  <div class="inner">
+    <div class="about-text">
+      <p class="label" data-i18n="i_label">Rechtliches</p>
+      <h2 data-i18n="i_title">Impressum</h2>
+      <h3 data-i18n="i1_t">Angaben gemäß § 5 DDG</h3>
+      <p>Monika Andronova<br>Torstraße 96<br>10119 Berlin<br><span data-i18n="i_country">Deutschland</span></p>
+      <h3 data-i18n="i2_t">Kontakt</h3>
+      <p><span data-i18n="i_mail_label">E-Mail:</span> monika.k.andronova@gmail.com</p>
+      <h3 data-i18n="i3_t">Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h3>
+      <p data-i18n="i3">Monika Andronova, Anschrift wie oben</p>
+      <h3 data-i18n="i4_t">Haftung für Inhalte</h3>
+      <p data-i18n="i4">Die Inhalte dieser Seite habe ich mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch keine Gewähr übernehmen.</p>
+      <h3 data-i18n="i5_t">Haftung für Links</h3>
+      <p data-i18n="i5">Diese Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen.</p>
+      <h3 data-i18n="i6_t">Urheberrecht</h3>
+      <p data-i18n="i6">Die von mir erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung bedürfen meiner vorherigen schriftlichen Zustimmung.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <span>© 2026 Monika Andronova</span>
+    <nav><a href="impressum.html" data-i18n="ft1">Impressum</a><a href="datenschutz.html" data-i18n="ft2">Datenschutz</a></nav>
+  </div>
+</footer>
+
+<script>
+var EN = {
+  nav1: 'Services', nav2: 'Results', nav3: 'FAQ', nav4: 'Free intro call',
+  ft1: 'Legal notice', ft2: 'Privacy',
+  i_label: 'Legal', i_title: 'Legal notice (Impressum)',
+  i1_t: 'Information according to § 5 DDG', i_country: 'Germany',
+  i2_t: 'Contact', i_mail_label: 'Email:',
+  i3_t: 'Responsible for the content according to § 18 (2) MStV', i3: 'Monika Andronova, address as above',
+  i4_t: 'Liability for content',
+  i4: 'I created the content of this site with great care. However, I cannot guarantee that it is correct, complete or up to date.',
+  i5_t: 'Liability for links',
+  i5: 'This website contains links to external third-party websites whose content I have no influence on. I therefore cannot accept any liability for that external content.',
+  i6_t: 'Copyright',
+  i6: 'The content and works I created on this website are subject to German copyright law. Copying, editing, distributing or any other use requires my prior written consent.'
+};
+var nodes = document.querySelectorAll('[data-i18n]');
+var DE = {};
+nodes.forEach(function (el) { DE[el.getAttribute('data-i18n')] = el.innerHTML; });
+
+function setLang(lang) {
+  var dict = lang === 'en' ? EN : DE;
+  nodes.forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  document.getElementById('lang-de').setAttribute('aria-pressed', String(lang === 'de'));
+  document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
+  try { localStorage.setItem('ma-lang', lang); } catch (e) {}
+}
+
+document.querySelectorAll('.lang button').forEach(function (btn) {
+  btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang')); });
+});
+
+try {
+  if (localStorage.getItem('ma-lang') === 'en') setLang('en');
+} catch (e) {}
+</script>
+
+</body></html>

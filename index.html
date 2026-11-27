@@ -4,175 +4,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap">
-<style>
-/* Layout: sticky glass header, oversized tight headline, bento service grid with one ink card, numbered process, FAQ, contained call-to-action card */
-:root {
-  --bg: #FAFAFB;
-  --surface: #FFFFFF;
-  --fg: #0D0E14;
-  --muted: #5F6170;
-  --line: #E6E6EC;
-  --accent: #5B3DF5;
-  --accent-soft: #EEEAFF;
-  --on-accent: #FFFFFF;
-  --ink: #0D0E14;
-  --on-ink: #F4F4F8;
-  --on-ink-muted: #A3A4B5;
-  --ok: #16A34A;
-  --sans: "Geist", "Inter", system-ui, sans-serif;
-  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --step-0: 1.0625rem;
-  --step-1: 1.25rem;
-  --step-2: clamp(1.9rem, 4vw, 3rem);
-  --step-3: clamp(2.8rem, 8vw, 6rem);
-  --radius: 18px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0B0C11; --surface: #13141C; --fg: #F2F2F6; --muted: #9C9DAE; --line: #24253A;
-    --accent: #9D8BFF; --accent-soft: #221D45; --on-accent: #0B0C11;
-    --ink: #1B1C29; --on-ink: #F2F2F6; --on-ink-muted: #A3A4B5; --ok: #4ADE80;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0B0C11; --surface: #13141C; --fg: #F2F2F6; --muted: #9C9DAE; --line: #24253A;
-  --accent: #9D8BFF; --accent-soft: #221D45; --on-accent: #0B0C11;
-  --ink: #1B1C29; --on-ink: #F2F2F6; --on-ink-muted: #A3A4B5; --ok: #4ADE80;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: var(--step-0); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-.inner { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-h1, h2, h3 { margin: 0; line-height: 1.02; text-wrap: balance; font-weight: 700; }
-h1 { font-size: var(--step-3); letter-spacing: -0.045em; font-weight: 800; }
-h2 { font-size: var(--step-2); letter-spacing: -0.035em; }
-h3 { font-size: 1.3rem; letter-spacing: -0.02em; line-height: 1.2; font-weight: 600; }
-p { margin: 0; }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
-.label { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.mark { color: var(--accent); }
-.muted { color: var(--muted); }
-
-.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: var(--fg); color: var(--bg);
-  padding: 14px 22px; border-radius: 999px; border: 0; font: inherit; font-weight: 600; font-size: 1rem; cursor: pointer;
-  transition: transform .2s ease, background-color .2s ease; }
-.btn:hover { transform: translateY(-1px); }
-.btn .arrow { transition: transform .2s ease; }
-.btn:hover .arrow { transform: translateX(3px); }
-.btn.accent { background: var(--accent); color: var(--on-accent); }
-.btn.ghost { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); }
-.btn.small { padding: 9px 16px; font-size: 0.92rem; }
-
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-header .inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; }
-.name { font-weight: 700; letter-spacing: -0.02em; font-size: 1.05rem; }
-header nav { display: flex; gap: 22px; align-items: center; }
-header nav a.link { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
-header nav a.link:hover { color: var(--fg); }
-.lang { display: inline-flex; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); border-radius: 999px; padding: 3px; }
-.lang button { font-family: var(--mono); font-size: 0.75rem; border: 0; background: transparent; color: var(--muted); padding: 5px 10px; border-radius: 999px; cursor: pointer; }
-.lang button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
-
-.hero .inner { display: grid; grid-template-columns: 1.7fr 1fr; gap: 56px; align-items: center; padding-block: 72px 88px; }
-.hero-text { display: grid; gap: 28px; min-width: 0; }
-.status { display: inline-flex; align-items: center; gap: 10px; justify-self: start; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); border-radius: 999px; padding: 6px 14px 6px 10px; font-size: 0.9rem; font-weight: 500; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent); }
-.lead { font-size: var(--step-1); color: var(--muted); max-width: 52ch; line-height: 1.55; }
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
-.photo { position: relative; justify-self: end; width: 100%; max-width: 360px; }
-.photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 15%; border-radius: 24px; display: block; }
-.photo figcaption { position: absolute; left: 14px; right: 14px; bottom: 14px; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 14px; padding: 12px 14px; display: grid; gap: 2px; }
-.photo figcaption strong { font-weight: 600; font-size: 0.98rem; }
-.photo figcaption span { color: var(--muted); font-size: 0.85rem; }
-
-section .inner { padding-block: 96px; }
-section + section .inner { border-top: 1px solid var(--line); }
-.head { display: grid; gap: 14px; margin-bottom: 44px; max-width: 64ch; }
-.head p { color: var(--muted); font-size: 1.1rem; }
-
-.principle .inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
-.principle .inner > * { min-width: 0; }
-.principle .head { margin-bottom: 0; }
-.principle .copy { display: grid; gap: 16px; color: var(--muted); font-size: 1.1rem; }
-
-.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.card { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); border-radius: var(--radius); padding: 28px; display: grid; gap: 18px; grid-template-rows: auto auto auto 1fr auto; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
-.card:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 1px var(--line), 0 18px 40px -24px color-mix(in srgb, var(--fg) 35%, transparent); }
-.card.ink { background: var(--ink); color: var(--on-ink); box-shadow: none; }
-.card.ink .who, .card.ink .card-foot span { color: var(--on-ink-muted); }
-.card.ink .card-foot { border-color: color-mix(in srgb, var(--on-ink) 18%, transparent); }
-.card .who { color: var(--muted); font-size: 0.98rem; }
-.card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.card li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 0.98rem; }
-.card li::before { content: "→"; color: var(--accent); font-weight: 600; }
-.tag { justify-self: start; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 999px; }
-.card.ink .tag { background: var(--accent); color: var(--on-accent); }
-.card-foot { border-top: 1px solid var(--line); padding-top: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.card-foot strong { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.card-foot span { color: var(--muted); font-size: 0.9rem; }
-
-.cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.case { border-radius: var(--radius); padding: 28px; display: grid; gap: 12px; align-content: start; min-width: 0; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
-.case strong { font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
-.case p { color: var(--muted); }
-
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
-.step { display: grid; gap: 10px; align-content: start; min-width: 0; padding: 24px; border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
-.step::before { counter-increment: step; content: "0" counter(step); font-family: var(--mono); font-size: 0.85rem; color: var(--accent); }
-.step p { color: var(--muted); font-size: 0.98rem; }
-
-.about .inner { display: grid; grid-template-columns: minmax(0, 76ch); }
-.about-text { display: grid; gap: 18px; }
-.about-text p { font-size: 1.1rem; }
-.legal .about-text p:not(.label) { font-size: 1rem; color: var(--muted); }
-.legal h3 { font-size: 1.1rem; margin-top: 10px; }
-.creds { display: flex; flex-wrap: wrap; gap: 8px; }
-.creds span { font-size: 0.9rem; padding: 6px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); }
-
-.faq { display: grid; border-top: 1px solid var(--line); }
-details { border-bottom: 1px solid var(--line); }
-summary { cursor: pointer; list-style: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-weight: 600; font-size: 1.12rem; letter-spacing: -0.01em; }
-summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1px var(--line); color: var(--fg); font-weight: 500; transition: transform .2s ease; }
-details[open] summary::after { transform: rotate(45deg); }
-details p { padding-bottom: 22px; color: var(--muted); max-width: 70ch; }
-
-.cta-card { background: var(--ink); color: var(--on-ink); border-radius: 28px; padding: clamp(28px, 6vw, 64px); display: grid; gap: 22px; justify-items: start; }
-.cta-card .label, .cta-card p { color: var(--on-ink-muted); }
-.cta-card p { max-width: 52ch; font-size: 1.1rem; }
-.cta-card h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
-.contact-box { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.mail { font-size: var(--step-1); font-weight: 600; user-select: all; word-break: break-all; padding-right: 6px; }
-.cta-card .btn { background: var(--on-ink); color: var(--ink); }
-.cta-card .btn.ghost { background: transparent; color: var(--on-ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--on-ink) 30%, transparent); }
-.copy-status { color: var(--on-ink-muted); font-size: 0.9rem; min-height: 1.4em; }
-
-footer .inner { padding-block: 28px 44px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; color: var(--muted); font-size: 0.92rem; }
-footer nav { display: flex; gap: 20px; }
-footer a { color: var(--muted); }
-
-@media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
-  .hero-text > *, .photo { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
-  .hero-text > :nth-child(2) { animation-delay: .06s; }
-  .hero-text > :nth-child(3) { animation-delay: .12s; }
-  .hero-text > :nth-child(4) { animation-delay: .18s; }
-  .photo { animation-delay: .1s; }
-  @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
-}
-@media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 860px) {
-  .hero .inner, .principle .inner { grid-template-columns: 1fr; gap: 32px; }
-  .hero .inner { padding-block: 40px 56px; }
-  .photo { justify-self: start; max-width: 260px; order: -1; }
-  .services, .cases, .steps { grid-template-columns: 1fr; }
-  header nav a.link { display: none; }
-  section .inner { padding-block: 64px; }
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 
 <header>
   <div class="inner">
@@ -382,57 +214,9 @@ footer a { color: var(--muted); }
       <h2 data-i18n="k_title">Erzählen Sie mir von Ihrem Vorhaben</h2>
       <p data-i18n="k_lead">Schreiben Sie mir kurz, worum es geht und wann Sie Zeit haben. Dann vereinbaren wir das kostenlose Erstgespräch.</p>
       <div class="contact-box">
-        <span class="mail" id="mail" data-i18n="k_mail">monika.k.andronova@gmail.com</span>
-        <button class="btn ghost small" id="copy" type="button" data-i18n="k_copy">Adresse kopieren</button>
+        <a class="btn accent small" href="https://calendar.app.google/z6Ki92aGeUk1TYn67" target="_blank" rel="noopener"><span data-i18n="k_book">Erstgespräch buchen</span><span class="arrow">→</span></a>
         <a class="btn small" href="https://www.linkedin.com/in/monika-andronova-ba39337a/" target="_blank" rel="noopener"><span data-i18n="k_li">Auf LinkedIn schreiben</span><span class="arrow">→</span></a>
       </div>
-      <p class="copy-status" id="status" aria-live="polite"></p>
-    </div>
-  </div>
-</section>
-
-<section class="about legal" id="impressum">
-  <div class="inner">
-    <div class="about-text">
-      <p class="label" data-i18n="i_label">Rechtliches</p>
-      <h2 data-i18n="i_title">Impressum</h2>
-      <h3 data-i18n="i1_t">Angaben gemäß § 5 DDG</h3>
-      <p>Monika Andronova<br>Torstraße 96<br>10119 Berlin<br><span data-i18n="i_country">Deutschland</span></p>
-      <h3 data-i18n="i2_t">Kontakt</h3>
-      <p><span data-i18n="i_mail_label">E-Mail:</span> monika.k.andronova@gmail.com</p>
-      <h3 data-i18n="i3_t">Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h3>
-      <p data-i18n="i3">Monika Andronova, Anschrift wie oben</p>
-      <h3 data-i18n="i4_t">Haftung für Inhalte</h3>
-      <p data-i18n="i4">Die Inhalte dieser Seite habe ich mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch keine Gewähr übernehmen.</p>
-      <h3 data-i18n="i5_t">Haftung für Links</h3>
-      <p data-i18n="i5">Diese Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen.</p>
-      <h3 data-i18n="i6_t">Urheberrecht</h3>
-      <p data-i18n="i6">Die von mir erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung bedürfen meiner vorherigen schriftlichen Zustimmung.</p>
-    </div>
-  </div>
-</section>
-
-<section class="about legal" id="datenschutz">
-  <div class="inner">
-    <div class="about-text">
-      <p class="label" data-i18n="d_label">Rechtliches</p>
-      <h2 data-i18n="d_title">Datenschutz</h2>
-      <h3 data-i18n="d1_t">Verantwortliche</h3>
-      <p>Monika Andronova<br>Torstraße 96, 10119 Berlin<br><span data-i18n="d_mail_label">E-Mail:</span> monika.k.andronova@gmail.com</p>
-      <h3 data-i18n="d2_t">Hosting</h3>
-      <p data-i18n="d2">Diese Website liegt bei GitHub Pages, einem Dienst der GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. Beim Aufruf der Seite verarbeitet GitHub technisch notwendige Daten wie Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs und Angaben zu Ihrem Browser, auch in den USA. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO: mein berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website. Mehr dazu in der Datenschutzerklärung von GitHub.</p>
-      <h3 data-i18n="d3_t">Schriftarten</h3>
-      <p data-i18n="d3">Die Schrift dieser Seite wird von Google Fonts geladen, einem Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Dabei wird Ihre IP-Adresse an Google übertragen, auch an Server in den USA. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO: mein berechtigtes Interesse an einer einheitlichen Darstellung der Website.</p>
-      <h3 data-i18n="d4_t">Sprachauswahl, Cookies und Tracking</h3>
-      <p data-i18n="d4">Diese Website setzt keine Cookies und nutzt keine Analyse- oder Tracking-Dienste. Wenn Sie die Sprache umstellen, wird Ihre Auswahl im lokalen Speicher Ihres Browsers abgelegt, damit die Seite beim nächsten Besuch in derselben Sprache erscheint (§ 25 Abs. 2 Nr. 2 TDDDG). Diese Angabe bleibt auf Ihrem Gerät und wird nicht an mich übertragen.</p>
-      <h3 data-i18n="d5_t">Kontakt per E-Mail</h3>
-      <p data-i18n="d5">Wenn Sie mir eine E-Mail schreiben, verarbeite ich Ihre Angaben, um Ihre Anfrage zu beantworten und ein mögliches Projekt vorzubereiten (Art. 6 Abs. 1 lit. b und f DSGVO). Mein Postfach liegt bei Gmail, einem Dienst von Google. Ich lösche Ihre Nachricht, sobald sie für die Anfrage nicht mehr gebraucht wird und keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
-      <h3 data-i18n="d6_t">Link zu LinkedIn</h3>
-      <p data-i18n="d6">Der Link zu meinem LinkedIn-Profil ist ein einfacher Link. Daten gehen erst dann an LinkedIn, wenn Sie ihn anklicken. Dann gilt die Datenschutzerklärung von LinkedIn.</p>
-      <h3 data-i18n="d8_t">Terminbuchung</h3>
-      <p data-i18n="d8">Die Buttons für das Erstgespräch führen zu einer Terminbuchungsseite von Google Kalender. Das ist ein einfacher Link: Daten gehen erst dann an Google, wenn Sie ihn anklicken. Wenn Sie dort einen Termin buchen, erhalte ich Ihre Angaben wie Name und E-Mail-Adresse, um das Gespräch zu führen. Dann gilt die Datenschutzerklärung von Google.</p>
-      <h3 data-i18n="d7_t">Ihre Rechte</h3>
-      <p data-i18n="d7">Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit sowie das Recht, der Verarbeitung zu widersprechen (Art. 15 bis 21 DSGVO). Schreiben Sie mir dazu eine E-Mail. Sie können sich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der Berliner Beauftragten für Datenschutz und Informationsfreiheit.</p>
     </div>
   </div>
 </section>
@@ -440,7 +224,7 @@ footer a { color: var(--muted); }
 <footer>
   <div class="inner">
     <span>© 2026 Monika Andronova</span>
-    <nav><a href="#impressum" data-i18n="ft1">Impressum</a><a href="#datenschutz" data-i18n="ft2">Datenschutz</a></nav>
+    <nav><a href="impressum.html" data-i18n="ft1">Impressum</a><a href="datenschutz.html" data-i18n="ft2">Datenschutz</a></nav>
   </div>
 </footer>
 
@@ -502,38 +286,8 @@ var EN = {
   f6_q: 'Which languages do you work in?', f6_a: 'German, English and Bulgarian. I write the business plan in German or English.',
   k_label: 'Contact', k_title: 'Tell me about your plans',
   k_lead: 'Send me a short note on what it is about and when you have time. Then we schedule the free intro call.',
-  k_mail: 'monika.k.andronova@gmail.com', k_copy: 'Copy address', k_li: 'Message me on LinkedIn',
-  ft1: 'Legal notice', ft2: 'Privacy',
-  i_label: 'Legal', i_title: 'Legal notice (Impressum)',
-  i1_t: 'Information according to § 5 DDG', i_country: 'Germany',
-  i2_t: 'Contact', i_mail_label: 'Email:',
-  i3_t: 'Responsible for the content according to § 18 (2) MStV', i3: 'Monika Andronova, address as above',
-  i4_t: 'Liability for content',
-  i4: 'I created the content of this site with great care. However, I cannot guarantee that it is correct, complete or up to date.',
-  i5_t: 'Liability for links',
-  i5: 'This website contains links to external third-party websites whose content I have no influence on. I therefore cannot accept any liability for that external content.',
-  i6_t: 'Copyright',
-  i6: 'The content and works I created on this website are subject to German copyright law. Copying, editing, distributing or any other use requires my prior written consent.',
-  d_label: 'Legal', d_title: 'Privacy',
-  d1_t: 'Controller', d_mail_label: 'Email:',
-  d2_t: 'Hosting',
-  d2: 'This website is hosted on GitHub Pages, a service of GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. When you open the page, GitHub processes technically necessary data such as your IP address, the date and time of access and details about your browser, including in the USA. The legal basis is Art. 6 (1) (f) GDPR: my legitimate interest in providing the website securely and reliably. You can find more in GitHub’s privacy statement.',
-  d3_t: 'Fonts',
-  d3: 'The font on this page is loaded from Google Fonts, a service of Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. Your IP address is transferred to Google in the process, including to servers in the USA. The legal basis is Art. 6 (1) (f) GDPR: my legitimate interest in a consistent appearance of the website.',
-  d4_t: 'Language choice, cookies and tracking',
-  d4: 'This website sets no cookies and uses no analytics or tracking services. If you switch the language, your choice is saved in your browser’s local storage so that the page appears in the same language on your next visit (§ 25 (2) no. 2 TDDDG). This information stays on your device and is not sent to me.',
-  d5_t: 'Contact by email',
-  d5: 'If you send me an email, I process your details to answer your request and to prepare a possible project (Art. 6 (1) (b) and (f) GDPR). My mailbox is with Gmail, a Google service. I delete your message once it is no longer needed for the request and no legal retention duties apply.',
-  d6_t: 'Link to LinkedIn',
-  d6: 'The link to my LinkedIn profile is a plain link. Data only goes to LinkedIn when you click it. LinkedIn’s privacy policy then applies.',
-  d8_t: 'Booking a call',
-  d8: 'The buttons for the intro call lead to a Google Calendar booking page. It is a plain link: data only goes to Google when you click it. If you book a slot there, I receive your details such as name and email address in order to hold the call. Google’s privacy policy then applies.',
-  d7_t: 'Your rights',
-  d7: 'You have the right to access, rectification, erasure, restriction of processing and data portability, and the right to object to processing (Art. 15 to 21 GDPR). To use them, send me an email. You can also complain to a data protection supervisory authority, for example the Berlin Commissioner for Data Protection and Freedom of Information.'
-};
-var STATUS = {
-  de: { copied: 'Adresse kopiert.', selected: 'Adresse markiert. Mit Strg+C oder Cmd+C kopieren.' },
-  en: { copied: 'Address copied.', selected: 'Address selected. Press Ctrl+C or Cmd+C to copy.' }
+  k_book: 'Book a discovery call', k_li: 'Message me on LinkedIn',
+  ft1: 'Legal notice', ft2: 'Privacy'
 };
 var nodes = document.querySelectorAll('[data-i18n]');
 var DE = {};
@@ -550,7 +304,6 @@ function setLang(lang) {
   document.documentElement.lang = lang;
   document.getElementById('lang-de').setAttribute('aria-pressed', String(lang === 'de'));
   document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
-  document.getElementById('status').textContent = '';
   try { localStorage.setItem('ma-lang', lang); } catch (e) {}
 }
 
@@ -562,22 +315,6 @@ try {
   if (localStorage.getItem('ma-lang') === 'en') setLang('en');
 } catch (e) {}
 
-document.getElementById('copy').addEventListener('click', function () {
-  var mail = document.getElementById('mail');
-  var status = document.getElementById('status');
-  function fallback() {
-    var range = document.createRange();
-    range.selectNodeContents(mail);
-    var sel = window.getSelection();
-    sel.removeAllRanges(); sel.addRange(range);
-    status.textContent = STATUS[current].selected;
-  }
-  try {
-    navigator.clipboard.writeText(mail.textContent.trim()).then(function () {
-      status.textContent = STATUS[current].copied;
-    }, fallback);
-  } catch (e) { fallback(); }
-});
 </script>
 
 </body></html>
