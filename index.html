@@ -1,0 +1,509 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Monika Andronova</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap">
+<style>
+/* Layout: sticky glass header, oversized tight headline, bento service grid with one ink card, numbered process, FAQ, contained call-to-action card */
+:root {
+  --bg: #FAFAFB;
+  --surface: #FFFFFF;
+  --fg: #0D0E14;
+  --muted: #5F6170;
+  --line: #E6E6EC;
+  --accent: #5B3DF5;
+  --accent-soft: #EEEAFF;
+  --on-accent: #FFFFFF;
+  --ink: #0D0E14;
+  --on-ink: #F4F4F8;
+  --on-ink-muted: #A3A4B5;
+  --ok: #16A34A;
+  --sans: "Geist", "Inter", system-ui, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.9rem, 4vw, 3rem);
+  --step-3: clamp(2.8rem, 8vw, 6rem);
+  --radius: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B0C11; --surface: #13141C; --fg: #F2F2F6; --muted: #9C9DAE; --line: #24253A;
+    --accent: #9D8BFF; --accent-soft: #221D45; --on-accent: #0B0C11;
+    --ink: #1B1C29; --on-ink: #F2F2F6; --on-ink-muted: #A3A4B5; --ok: #4ADE80;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B0C11; --surface: #13141C; --fg: #F2F2F6; --muted: #9C9DAE; --line: #24253A;
+  --accent: #9D8BFF; --accent-soft: #221D45; --on-accent: #0B0C11;
+  --ink: #1B1C29; --on-ink: #F2F2F6; --on-ink-muted: #A3A4B5; --ok: #4ADE80;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: var(--step-0); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.inner { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; line-height: 1.02; text-wrap: balance; font-weight: 700; }
+h1 { font-size: var(--step-3); letter-spacing: -0.045em; font-weight: 800; }
+h2 { font-size: var(--step-2); letter-spacing: -0.035em; }
+h3 { font-size: 1.3rem; letter-spacing: -0.02em; line-height: 1.2; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+.label { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.mark { color: var(--accent); }
+.muted { color: var(--muted); }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: var(--fg); color: var(--bg);
+  padding: 14px 22px; border-radius: 999px; border: 0; font: inherit; font-weight: 600; font-size: 1rem; cursor: pointer;
+  transition: transform .2s ease, background-color .2s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn .arrow { transition: transform .2s ease; }
+.btn:hover .arrow { transform: translateX(3px); }
+.btn.accent { background: var(--accent); color: var(--on-accent); }
+.btn.ghost { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); }
+.btn.small { padding: 9px 16px; font-size: 0.92rem; }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+header .inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; }
+.name { font-weight: 700; letter-spacing: -0.02em; font-size: 1.05rem; }
+header nav { display: flex; gap: 22px; align-items: center; }
+header nav a.link { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+header nav a.link:hover { color: var(--fg); }
+.lang { display: inline-flex; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); border-radius: 999px; padding: 3px; }
+.lang button { font-family: var(--mono); font-size: 0.75rem; border: 0; background: transparent; color: var(--muted); padding: 5px 10px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+.hero .inner { display: grid; grid-template-columns: 1.7fr 1fr; gap: 56px; align-items: center; padding-block: 72px 88px; }
+.hero-text { display: grid; gap: 28px; min-width: 0; }
+.status { display: inline-flex; align-items: center; gap: 10px; justify-self: start; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); border-radius: 999px; padding: 6px 14px 6px 10px; font-size: 0.9rem; font-weight: 500; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent); }
+.lead { font-size: var(--step-1); color: var(--muted); max-width: 52ch; line-height: 1.55; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.photo { position: relative; justify-self: end; width: 100%; max-width: 360px; }
+.photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 15%; border-radius: 24px; display: block; }
+.photo figcaption { position: absolute; left: 14px; right: 14px; bottom: 14px; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 14px; padding: 12px 14px; display: grid; gap: 2px; }
+.photo figcaption strong { font-weight: 600; font-size: 0.98rem; }
+.photo figcaption span { color: var(--muted); font-size: 0.85rem; }
+
+section .inner { padding-block: 96px; }
+section + section .inner { border-top: 1px solid var(--line); }
+.head { display: grid; gap: 14px; margin-bottom: 44px; max-width: 64ch; }
+.head p { color: var(--muted); font-size: 1.1rem; }
+
+.principle .inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
+.principle .inner > * { min-width: 0; }
+.principle .head { margin-bottom: 0; }
+.principle .copy { display: grid; gap: 16px; color: var(--muted); font-size: 1.1rem; }
+
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); border-radius: var(--radius); padding: 28px; display: grid; gap: 18px; grid-template-rows: auto auto auto 1fr auto; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
+.card:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 1px var(--line), 0 18px 40px -24px color-mix(in srgb, var(--fg) 35%, transparent); }
+.card.ink { background: var(--ink); color: var(--on-ink); box-shadow: none; }
+.card.ink .who, .card.ink .card-foot span { color: var(--on-ink-muted); }
+.card.ink .card-foot { border-color: color-mix(in srgb, var(--on-ink) 18%, transparent); }
+.card .who { color: var(--muted); font-size: 0.98rem; }
+.card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.card li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 0.98rem; }
+.card li::before { content: "→"; color: var(--accent); font-weight: 600; }
+.tag { justify-self: start; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 999px; }
+.card.ink .tag { background: var(--accent); color: var(--on-accent); }
+.card-foot { border-top: 1px solid var(--line); padding-top: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.card-foot strong { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.card-foot span { color: var(--muted); font-size: 0.9rem; }
+
+.cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.case { border-radius: var(--radius); padding: 28px; display: grid; gap: 12px; align-content: start; min-width: 0; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+.case strong { font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+.case p { color: var(--muted); }
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
+.step { display: grid; gap: 10px; align-content: start; min-width: 0; padding: 24px; border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
+.step::before { counter-increment: step; content: "0" counter(step); font-family: var(--mono); font-size: 0.85rem; color: var(--accent); }
+.step p { color: var(--muted); font-size: 0.98rem; }
+
+.about .inner { display: grid; grid-template-columns: minmax(0, 76ch); }
+.about-text { display: grid; gap: 18px; }
+.about-text p { font-size: 1.1rem; }
+.creds { display: flex; flex-wrap: wrap; gap: 8px; }
+.creds span { font-size: 0.9rem; padding: 6px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); }
+
+.faq { display: grid; border-top: 1px solid var(--line); }
+details { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; list-style: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-weight: 600; font-size: 1.12rem; letter-spacing: -0.01em; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1px var(--line); color: var(--fg); font-weight: 500; transition: transform .2s ease; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding-bottom: 22px; color: var(--muted); max-width: 70ch; }
+
+.cta-card { background: var(--ink); color: var(--on-ink); border-radius: 28px; padding: clamp(28px, 6vw, 64px); display: grid; gap: 22px; justify-items: start; }
+.cta-card .label, .cta-card p { color: var(--on-ink-muted); }
+.cta-card p { max-width: 52ch; font-size: 1.1rem; }
+.cta-card h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+.contact-box { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.mail { font-size: var(--step-1); font-weight: 600; user-select: all; word-break: break-all; padding-right: 6px; }
+.cta-card .btn { background: var(--on-ink); color: var(--ink); }
+.cta-card .btn.ghost { background: transparent; color: var(--on-ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--on-ink) 30%, transparent); }
+.copy-status { color: var(--on-ink-muted); font-size: 0.9rem; min-height: 1.4em; }
+
+footer .inner { padding-block: 28px 44px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; color: var(--muted); font-size: 0.92rem; }
+footer nav { display: flex; gap: 20px; }
+footer a { color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .hero-text > *, .photo { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-text > :nth-child(2) { animation-delay: .06s; }
+  .hero-text > :nth-child(3) { animation-delay: .12s; }
+  .hero-text > :nth-child(4) { animation-delay: .18s; }
+  .photo { animation-delay: .1s; }
+  @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+}
+@media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) {
+  .hero .inner, .principle .inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero .inner { padding-block: 40px 56px; }
+  .photo { justify-self: start; max-width: 260px; order: -1; }
+  .services, .cases, .steps { grid-template-columns: 1fr; }
+  header nav a.link { display: none; }
+  section .inner { padding-block: 64px; }
+}
+</style>
+
+<header>
+  <div class="inner">
+    <div class="name">Monika Andronova</div>
+    <nav>
+      <a class="link" href="#leistungen" data-i18n="nav1">Leistungen</a>
+      <a class="link" href="#ergebnisse" data-i18n="nav2">Ergebnisse</a>
+      <a class="link" href="#faq" data-i18n="nav3">Fragen</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" id="lang-de" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn small" href="#kontakt" data-i18n="nav4">Erstgespräch</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="inner">
+    <div class="hero-text">
+      <span class="status"><span class="dot"></span><span data-i18n="h_status">Verfügbar für neue Projekte</span></span>
+      <h1 data-i18n="h_title">Von der Idee zur <span class="mark">laufenden Firma</span>.</h1>
+      <p class="lead" data-i18n="h_lead">Ich begleite Gründerinnen, Gründer und junge Unternehmen in Deutschland: vom ersten Gründungs-Check über den Businessplan bis zum Markteintritt. Mit über elf Jahren Erfahrung in Beratung, Startups und eigenen Gründungen helfe ich Ihnen, Ihr Unternehmen in Deutschland zu starten und aufzubauen.</p>
+      <div class="cta-row">
+        <a class="btn accent" href="#kontakt"><span data-i18n="h_cta1">Kostenloses Erstgespräch, 20 Minuten</span><span class="arrow">→</span></a>
+        <a class="btn ghost" href="#leistungen" data-i18n="h_cta2">Leistungen ansehen</a>
+      </div>
+    </div>
+    <figure class="photo" style="margin:0">
+      <img src="monika-portrait.jpg" alt="Monika Andronova">
+      <figcaption><strong>Monika Andronova</strong><span data-i18n="h_caption">Gründung · Businessplan · Venture Building</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="principle">
+  <div class="inner">
+    <div class="head">
+      <p class="label" data-i18n="p_label">So arbeite ich</p>
+      <h2 data-i18n="p_title">Schaffen Sie das <span class="mark">richtige Fundament</span>, um Ihr Unternehmen zu starten, zu führen und den Überblick über Ihre To-dos zu behalten.</h2>
+    </div>
+    <div class="copy">
+      <p data-i18n="p1">Am Anfang einer Gründung stehen viele offene Fragen: welche Rechtsform, welche Kosten, welche Förderung, welcher Plan. Gerade in Deutschland kann der Papierkram überwältigend sein.</p>
+      <p data-i18n="p2">Statt Zeit und wertvolle Ressourcen zu verlieren, bekommen Sie eine erste Einschätzung, einen Plan und konkrete nächste Schritte, um Ihr Unternehmen zu starten und zu führen.</p>
+    </div>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="inner">
+    <div class="head">
+      <p class="label" data-i18n="s_label">Leistungen</p>
+      <h2 data-i18n="s_title">Drei Wege, zusammenzuarbeiten</h2>
+      <p data-i18n="s_lead">Sie können bei jedem Schritt einsteigen. Jede Leistung hat einen klaren Umfang und einen festen Preis oder ein Angebot vorab.</p>
+    </div>
+    <div class="services">
+      <article class="card">
+        <span class="tag" data-i18n="c1_tag">Einstieg</span>
+        <h3 data-i18n="c1_title">Gründungs-Check</h3>
+        <p class="who" data-i18n="c1_who">Für alle, die gründen wollen und wissen möchten, was auf sie zukommt.</p>
+        <ul>
+          <li data-i18n="c1_1">Ihre Idee, Ihre Ziele, Ihr Zeitplan</li>
+          <li data-i18n="c1_2">Überblick über Rechtsformen und Gründungsschritte</li>
+          <li data-i18n="c1_3">Kosten und Zeitaufwand der Gründung</li>
+          <li data-i18n="c1_4">Passende Förderprogramme im Überblick</li>
+          <li data-i18n="c1_5">Kurze schriftliche Zusammenfassung mit nächsten Schritten</li>
+        </ul>
+        <div class="card-foot"><strong data-i18n="c1_price">190 €</strong><span data-i18n="c1_foot">90 Minuten, online</span></div>
+      </article>
+      <article class="card ink">
+        <span class="tag" data-i18n="c2_tag">Für die Gründung</span>
+        <h3 data-i18n="c2_title">Businessplan &amp; Finanzplan</h3>
+        <p class="who" data-i18n="c2_who">Für Gründungen, die Bank, Arbeitsagentur oder IHK überzeugen müssen, auch für den Gründungszuschuss.</p>
+        <ul>
+          <li data-i18n="c2_1">Geschäftsidee, Zielgruppe, Markt und Wettbewerb</li>
+          <li data-i18n="c2_2">Marketing, Vertrieb und Gründerprofil</li>
+          <li data-i18n="c2_3">Kapitalbedarf, Finanzierung, Rentabilität und Liquidität</li>
+          <li data-i18n="c2_4">Vorbereitet für die fachkundige Stellungnahme</li>
+          <li data-i18n="c2_5">Zwei Arbeitstermine, eine Korrekturrunde</li>
+        </ul>
+        <div class="card-foot"><strong data-i18n="c2_price">Auf Anfrage</strong><span data-i18n="c2_foot">Angebot nach dem Erstgespräch</span></div>
+      </article>
+      <article class="card">
+        <span class="tag" data-i18n="c3_tag">Für junge Unternehmen</span>
+        <h3>Venture Building</h3>
+        <p class="who" data-i18n="c3_who">Für Startups und Unternehmen, die ein neues Produkt, ein Venture oder einen neuen Markt starten.</p>
+        <ul>
+          <li data-i18n="c3_1">Positionierung und Preisgestaltung</li>
+          <li data-i18n="c3_2">Launch- und Go-to-Market-Plan</li>
+          <li data-i18n="c3_3">Finanzplanung und Investorenstory</li>
+          <li data-i18n="c3_4">Prozesse und KI-Tools, die im Alltag laufen</li>
+          <li data-i18n="c3_5">Als Projekt oder als Interim-Lead</li>
+        </ul>
+        <div class="card-foot"><strong data-i18n="c3_price">Auf Anfrage</strong><span data-i18n="c3_foot">Angebot nach dem Erstgespräch</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="ergebnisse">
+  <div class="inner">
+    <div class="head">
+      <p class="label" data-i18n="r_label">Ergebnisse</p>
+      <h2 data-i18n="r_title">Ergebnisse statt Versprechen</h2>
+      <p data-i18n="r_lead">Drei Beispiele aus meiner Arbeit, ohne Kundennamen.</p>
+    </div>
+    <div class="cases">
+      <div class="case">
+        <strong>60+</strong>
+        <h3 data-i18n="r1_t">Digitale Gründungsplattform einer Bank</h3>
+        <p data-i18n="r1">Den frühen Aufbau von Startbereit begleitet und das Unternehmen als CEO geführt, heute zu 100 % im Besitz der Berliner Volksbank. Einen vollständig digitalen Gründungsprozess geschaffen und über 60 Gesellschaften (UG und GmbH) gegründet, die Kunden über diesen Prozess erwerben konnten.</p>
+      </div>
+      <div class="case">
+        <strong data-i18n="r2_v">USA · Asien</strong>
+        <h3 data-i18n="r2_t">Expansion eines Robotik-Unternehmens</h3>
+        <p data-i18n="r2">Die Expansion in die USA und nach Asien für ein Robotik-Unternehmen mit 30 Mio. $ Series-B-Finanzierung geleitet: Onboarding der Vertriebs- und Operations-Teams, Partnerschaften, Aufbau der Regionen und Ausbau in weitere Märkte. Am Ende waren die USA der wichtigste Markt des Unternehmens.</p>
+      </div>
+      <div class="case">
+        <strong data-i18n="r3_v">5+ Jahre</strong>
+        <h3 data-i18n="r3_t">Strategie und digitale Transformation</h3>
+        <p data-i18n="r3">Über fünf Jahre in der Unternehmensberatung, unter anderem bei Capgemini Invent: Kunden zu Strategie und digitaler Transformation beraten, neue Prozesse aufgesetzt, bestehende optimiert und neue digitale Modelle und Frameworks entwickelt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="head">
+      <p class="label" data-i18n="a_label">Ablauf</p>
+      <h2 data-i18n="a_title">So kommen wir ins Arbeiten</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3 data-i18n="a1_t">Erstgespräch</h3>
+        <p data-i18n="a1">20 Minuten, kostenlos. Sie erzählen von Ihrem Vorhaben, ich sage Ihnen ehrlich, welche Leistung passt oder ob Sie mich gar nicht brauchen.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="a2_t">Klarer Umfang</h3>
+        <p data-i18n="a2">Sie bekommen Umfang und Preis schriftlich, bevor wir starten. Keine offenen Stundenzettel.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="a3_t">Zusammenarbeit</h3>
+        <p data-i18n="a3">Wir arbeiten in festen Terminen, online. Nach jedem Termin bekommen Sie konkrete Ergebnisse und die nächsten Schritte.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="a4_t">Übergabe</h3>
+        <p data-i18n="a4">Der Plan, die Prozesse, die Ergebnisse: Alles gehört Ihnen und bleibt bei Ihnen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="ueber-mich">
+  <div class="inner">
+    <div class="about-text">
+      <p class="label" data-i18n="m_label">Über mich</p>
+      <h2 data-i18n="m_title">Ich habe selbst gegründet und Gründungen begleitet</h2>
+      <p data-i18n="m1">Ich bin Managementberaterin und Unternehmerin mit über elf Jahren Erfahrung in Beratung, Bank und Startups. Bei Capgemini Invent habe ich Strategie- und Transformationsprojekte für große deutsche Unternehmen geleitet und umgesetzt. Danach habe ich als Geschäftsführerin ein Corporate Venture der Berliner Volksbank aufgebaut und die Expansion eines Robotik-Unternehmens in die USA und nach Asien geleitet.</p>
+      <p data-i18n="m2">Heute baue ich Unternehmen KI-nativ auf und nutze diese Erfahrung für meine Kundinnen und Kunden.</p>
+      <div class="creds">
+        <span>Executive MBA (ESADE)</span><span>Scrum Master</span><span>SAFe</span><span data-i18n="m_lang">Deutsch, Englisch, Bulgarisch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="inner">
+    <div class="head">
+      <p class="label" data-i18n="f_label">Fragen</p>
+      <h2 data-i18n="f_title">Häufige Fragen</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary data-i18n="f1_q">Welche Leistung ist die richtige für mich?</summary>
+        <p data-i18n="f1_a">Wenn Sie noch am Anfang stehen, ist der Gründungs-Check der beste Einstieg. Brauchen Sie einen Plan für Bank, Arbeitsagentur oder IHK, ist es der Businessplan. Hat Ihr Unternehmen schon begonnen und Sie wollen ein Produkt oder einen Markt starten, sprechen wir über Venture Building. Im kostenlosen Erstgespräch finden wir es gemeinsam heraus.</p>
+      </details>
+      <details>
+        <summary data-i18n="f2_q">Bekomme ich mit dem Businessplan den Gründungszuschuss?</summary>
+        <p data-i18n="f2_a">Darüber entscheidet die Arbeitsagentur, deshalb kann niemand eine Zusage geben. Ein vollständiger, gut begründeter Plan ist aber die Grundlage für den Antrag und für die fachkundige Stellungnahme.</p>
+      </details>
+      <details>
+        <summary data-i18n="f3_q">Wer stellt die fachkundige Stellungnahme aus?</summary>
+        <p data-i18n="f3_a">Eine fachkundige Stelle, zum Beispiel die IHK oder die Handwerkskammer. Ich bereite Sie und Ihren Plan darauf vor.</p>
+      </details>
+      <details>
+        <summary data-i18n="f4_q">Brauche ich trotzdem Notar und Steuerberatung?</summary>
+        <p data-i18n="f4_a">Ja, für die rechtlichen und steuerlichen Fragen. Eine GmbH oder UG wird beim Notar gegründet, und Steuerfragen gehören zur Steuerberatung. Ich erkläre Ihnen die Schritte und bereite alles vor, berate aber nicht rechtlich oder steuerlich.</p>
+      </details>
+      <details>
+        <summary data-i18n="f5_q">Arbeiten Sie online oder vor Ort?</summary>
+        <p data-i18n="f5_a">Die Termine finden online statt. Treffen vor Ort sind nach Absprache möglich.</p>
+      </details>
+      <details>
+        <summary data-i18n="f6_q">In welchen Sprachen arbeiten Sie?</summary>
+        <p data-i18n="f6_a">Auf Deutsch, Englisch und Bulgarisch. Den Businessplan erstelle ich auf Deutsch oder Englisch.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="inner">
+    <div class="cta-card">
+      <p class="label" data-i18n="k_label">Kontakt</p>
+      <h2 data-i18n="k_title">Erzählen Sie mir von Ihrem Vorhaben</h2>
+      <p data-i18n="k_lead">Schreiben Sie mir kurz, worum es geht und wann Sie Zeit haben. Dann vereinbaren wir das kostenlose Erstgespräch.</p>
+      <div class="contact-box">
+        <span class="mail" id="mail" data-i18n="k_mail">monika.k.andronova@gmail.com</span>
+        <button class="btn ghost small" id="copy" type="button" data-i18n="k_copy">Adresse kopieren</button>
+        <a class="btn small" href="https://www.linkedin.com/in/monika-andronova-ba39337a/" target="_blank" rel="noopener"><span data-i18n="k_li">Auf LinkedIn schreiben</span><span class="arrow">→</span></a>
+      </div>
+      <p class="copy-status" id="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <span>© 2026 Monika Andronova</span>
+    <nav><a href="#impressum" data-i18n="ft1">Impressum</a><a href="#datenschutz" data-i18n="ft2">Datenschutz</a></nav>
+  </div>
+</footer>
+
+<script>
+var EN = {
+  nav1: 'Services', nav2: 'Results', nav3: 'FAQ', nav4: 'Free intro call',
+  h_status: 'Available for new projects',
+  h_title: 'From idea to a <span class="mark">running company</span>.',
+  h_lead: 'I support founders and young companies in Germany: from a first founding check and the business plan to market entry. With 11+ years in consulting, startups and building my own ventures, I’m here to help you start and build your venture in Germany.',
+  h_cta1: 'Free intro call, 20 minutes', h_cta2: 'See services',
+  h_caption: 'Founding · Business plan · Venture building',
+  r1_v: '€800,000', c1_price: '€190', c2_price: 'On request',
+  p_label: 'How I work', p_title: 'Create the <span class="mark">right foundation</span> to start and run your business, and stay on top of your to-dos.',
+  p1: 'Starting a company raises many open questions: which legal form, which costs, which funding, which plan. Especially in Germany, the paperwork can be overwhelming.',
+  p2: 'Instead of losing time and valuable resources, get a first assessment, a plan and actionable next steps to start and run your company.',
+  s_label: 'Services', s_title: 'Three ways to work together',
+  s_lead: 'You can start at any step. Every service has a clear scope and a fixed price, or a quote up front.',
+  c1_tag: 'Starting point', c1_title: 'Founding check',
+  c1_who: 'For anyone who wants to start a company and know what lies ahead.',
+  c1_1: 'Your idea, your goals, your timeline', c1_2: 'Overview of legal forms and founding steps',
+  c1_3: 'Costs and time needed to found', c1_4: 'Overview of suitable funding programmes',
+  c1_5: 'Short written summary with next steps', c1_foot: '90 minutes, online',
+  c2_tag: 'For founding', c2_title: 'Business plan &amp; financial plan',
+  c2_who: 'For founders who need to convince a bank, the employment agency or the IHK, including for the start-up grant (Gründungszuschuss).',
+  c2_1: 'Business idea, target customers, market and competition', c2_2: 'Marketing, sales and founder profile',
+  c2_3: 'Capital needs, financing, profitability and liquidity', c2_4: 'Prepared for the expert viability statement (fachkundige Stellungnahme)',
+  c2_5: 'Two working sessions, one round of corrections', c2_foot: 'Quote after the intro call',
+  c3_tag: 'For young companies',
+  c3_who: 'For startups and companies launching a new product, venture or market.',
+  c3_1: 'Positioning and pricing', c3_2: 'Launch and go-to-market plan', c3_3: 'Financial planning and investor story',
+  c3_4: 'Processes and AI tools that run day to day', c3_5: 'As a project or as interim lead',
+  c3_price: 'On request', c3_foot: 'Quote after the intro call',
+  r_label: 'Results', r_title: 'Results, not promises', r_lead: 'Three examples from my work, without client names.',
+  r1_t: 'A bank’s digital formation platform',
+  r1: 'Supported the early build of Startbereit and served as its CEO; the company is now 100% owned by Berliner Volksbank. Created a fully digital incorporation process and set up more than 60 companies (UG and GmbH) for clients to acquire through it.',
+  r2_v: 'US · Asia', r2_t: 'Expansion of a robotics company',
+  r2: 'Led the US and Asia expansion of a robotics company with a $30M Series B: onboarding the sales and operations teams, partnerships, regional set-up and expansion into further markets. By the end, the US had become the company’s most important market.',
+  r3_v: '5+ years', r3_t: 'Strategy and digital transformation',
+  r3: 'More than five years in management consulting, including at Capgemini Invent: advised clients on strategy and digital transformation, set up new processes, optimised existing ones, and developed new digital models and frameworks.',
+  a_label: 'Process', a_title: 'How we get started',
+  a1_t: 'Intro call', a1: '20 minutes, free. You tell me about your plans, and I tell you honestly which service fits, or whether you need me at all.',
+  a2_t: 'Clear scope', a2: 'You get the scope and price in writing before we start. No open-ended timesheets.',
+  a3_t: 'Working together', a3: 'We work in fixed sessions, online. After each session, you get deliverables and clear next steps.',
+  a4_t: 'Handover', a4: 'The plan, the processes, the results: they’re all yours to keep.',
+  m_label: 'About me', m_title: 'I’ve founded companies and supported founders',
+  m1: 'I am a management consultant and entrepreneur with more than eleven years in consulting, banking and startups. At Capgemini Invent I led and delivered strategy and transformation projects for large German companies. After that, as managing director, I built a corporate venture of Berliner Volksbank and led the US and Asia expansion of a robotics company.',
+  m2: 'Today I build companies AI-native and bring that experience to my clients.',
+  m_lang: 'German, English, Bulgarian',
+  f_label: 'FAQ', f_title: 'Frequently asked questions',
+  f1_q: 'Which service is right for me?',
+  f1_a: 'If you are just starting, the founding check is the best first step. If you need a plan for a bank, the employment agency or the IHK, it is the business plan. If your company is already running and you want to launch a product or market, we talk about venture building. We work it out together in the free intro call.',
+  f2_q: 'Will the business plan get me the start-up grant (Gründungszuschuss)?',
+  f2_a: 'The employment agency (Arbeitsagentur) decides, so nobody can guarantee it. A complete, well-reasoned plan is the basis for the application and for the expert viability statement.',
+  f3_q: 'Who issues the expert viability statement?',
+  f3_a: 'A qualified body, for example the IHK (chamber of commerce) or the chamber of crafts. I prepare you and your plan for it.',
+  f4_q: 'Do I still need a notary and a tax adviser?',
+  f4_a: 'Yes, for legal and tax questions. A GmbH or UG is founded at a notary, and tax questions belong with a tax adviser. I explain the steps and prepare everything, but I do not give legal or tax advice.',
+  f5_q: 'Do you work online or in person?', f5_a: 'Sessions take place online. Meeting in person is possible by arrangement.',
+  f6_q: 'Which languages do you work in?', f6_a: 'German, English and Bulgarian. I write the business plan in German or English.',
+  k_label: 'Contact', k_title: 'Tell me about your plans',
+  k_lead: 'Send me a short note on what it is about and when you have time. Then we schedule the free intro call.',
+  k_mail: 'monika.k.andronova@gmail.com', k_copy: 'Copy address', k_li: 'Message me on LinkedIn',
+  ft1: 'Legal notice', ft2: 'Privacy'
+};
+var STATUS = {
+  de: { copied: 'Adresse kopiert.', selected: 'Adresse markiert. Mit Strg+C oder Cmd+C kopieren.' },
+  en: { copied: 'Address copied.', selected: 'Address selected. Press Ctrl+C or Cmd+C to copy.' }
+};
+var nodes = document.querySelectorAll('[data-i18n]');
+var DE = {};
+nodes.forEach(function (el) { DE[el.getAttribute('data-i18n')] = el.innerHTML; });
+var current = 'de';
+
+function setLang(lang) {
+  current = lang;
+  var dict = lang === 'en' ? EN : DE;
+  nodes.forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  document.getElementById('lang-de').setAttribute('aria-pressed', String(lang === 'de'));
+  document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
+  document.getElementById('status').textContent = '';
+  try { localStorage.setItem('ma-lang', lang); } catch (e) {}
+}
+
+document.querySelectorAll('.lang button').forEach(function (btn) {
+  btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang')); });
+});
+
+try {
+  if (localStorage.getItem('ma-lang') === 'en') setLang('en');
+} catch (e) {}
+
+document.getElementById('copy').addEventListener('click', function () {
+  var mail = document.getElementById('mail');
+  var status = document.getElementById('status');
+  function fallback() {
+    var range = document.createRange();
+    range.selectNodeContents(mail);
+    var sel = window.getSelection();
+    sel.removeAllRanges(); sel.addRange(range);
+    status.textContent = STATUS[current].selected;
+  }
+  try {
+    navigator.clipboard.writeText(mail.textContent.trim()).then(function () {
+      status.textContent = STATUS[current].copied;
+    }, fallback);
+  } catch (e) { fallback(); }
+});
+</script>
+
+</body></html>
