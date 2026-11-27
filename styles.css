@@ -168,6 +168,8 @@ a.name { color: var(--fg); text-decoration: none; }
 
 /* "Previously at" employer strip (index.html, between .hero and .principle) */
 .prev .inner { padding-block: 28px 44px; }
+/* no hairline above the strip or above the section that follows it */
+.prev .inner, .prev + section .inner { border-top: 0; }
 .prev-label { margin: 0 0 24px; }
 .prev-viewport {
   overflow: hidden;
