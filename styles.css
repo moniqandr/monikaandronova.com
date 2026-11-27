@@ -165,3 +165,34 @@ footer a { color: var(--muted); }
   section .inner { padding-block: 64px; }
 }
 a.name { color: var(--fg); text-decoration: none; }
+
+/* "Previously at" employer strip (index.html, between .hero and .principle) */
+.prev .inner { padding-block: 28px 44px; }
+/* no hairline above the strip or above the section that follows it */
+.prev .inner, .prev + section .inner { border-top: 0; }
+.prev-label { margin: 0 0 24px; }
+.prev-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.prev-track { display: flex; align-items: center; flex-wrap: wrap; row-gap: 20px; }
+.prev-item { display: flex; align-items: center; gap: 56px; padding-right: 56px; }
+.prev-item::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: .55; }
+.prev-logo { height: 32px; display: flex; align-items: center; }
+.prev-logo span { font-weight: 600; font-size: 1.5rem; letter-spacing: -.02em; color: var(--fg); opacity: .78; white-space: nowrap; }
+/* when real logos go in: same height, one tone, readable in dark mode */
+.prev-logo img { height: 100%; width: auto; display: block; filter: grayscale(1); opacity: .78; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .prev-logo img { filter: grayscale(1) invert(1); } }
+.prev-note { margin: 22px 0 0; max-width: 62ch; font-size: .78rem; line-height: 1.5; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .prev-track { flex-wrap: nowrap; width: max-content; animation: prev-scroll 45s linear infinite; }
+  .prev-viewport:hover .prev-track, .prev-viewport:focus-within .prev-track { animation-play-state: paused; }
+  @keyframes prev-scroll { to { transform: translateX(-50%); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prev-viewport { -webkit-mask-image: none; mask-image: none; }
+  .prev-track [aria-hidden="true"] { display: none; }
+  .prev-track > .prev-item:nth-last-child(7)::after { display: none; }
+}
+@media (max-width: 860px) { .prev-item { gap: 40px; padding-right: 40px; } .prev-logo span { font-size: 1.25rem; } }
