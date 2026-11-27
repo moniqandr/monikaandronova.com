@@ -95,9 +95,10 @@ document.querySelectorAll('.lang button').forEach(function (btn) {
   btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang')); });
 });
 
-try {
-  if (localStorage.getItem('ma-lang') === 'en') setLang('en');
-} catch (e) {}
+// English is the default; German only for visitors who chose it before.
+var saved = null;
+try { saved = localStorage.getItem('ma-lang'); } catch (e) {}
+if (saved !== 'de') setLang('en');
 </script>
 
 </body></html>
