@@ -61,7 +61,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
 header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 header .inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; }
-.name { font-weight: 700; letter-spacing: -0.02em; font-size: 1.05rem; }
+.name { font-weight: 800; letter-spacing: -0.06em; font-size: 1.75rem; line-height: 1; }
+header .btn { white-space: nowrap; }
 header nav { display: flex; gap: 22px; align-items: center; }
 header nav a.link { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 header nav a.link:hover { color: var(--fg); }
